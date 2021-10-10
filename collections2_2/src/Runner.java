@@ -12,7 +12,7 @@ public class Runner {
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(new FileReader(FILE_PATH))) {
             Set<Segment> segments = new HashSet<>();
-            while (sc.hasNextLine()) {
+            while (sc.hasNext()) {
                 String[] line = sc.nextLine().split(PATTERN);
                 Point firstPoint = new Point(Double.parseDouble(line[INDEX_ONE]), Double.parseDouble(line[INDEX_TWO]));
                 Point secondPoint = new Point(Double.parseDouble(line[INDEX_THREE]), Double.parseDouble(line[INDEX_FOUR]));
@@ -41,14 +41,6 @@ public class Runner {
     private static int distance(Point one, Point two) {
         double dx = one.getX() - two.getX();
         double dy = one.getY() - two.getY();
-        return (int) Math.round(Math.sqrt(pow(dx, TWO) + pow(dy, TWO)));
-    }
-
-    private static double pow(double value, int d) {
-        double result = ONE;
-        for (int i = ONE; i <= d; i++) {
-            result = result * value;
-        }
-        return result;
+        return (int) Math.round(Math.sqrt((dx * dx) + (dy * dy)));
     }
 }
