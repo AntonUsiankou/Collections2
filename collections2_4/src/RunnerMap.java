@@ -14,7 +14,10 @@ public class RunnerMap {
                 String [] elements = scanner.nextLine().split(PATTERN_REG_EXP);
                 Integer len = calculateLen(elements);
                 Integer numberSegment = mapSegments.get(len);
-                mapSegments.put(len,numberSegment == null ? NUMBER_ONE : ++numberSegment);
+                if (numberSegment == null) {
+                    numberSegment = 0;
+                }
+                mapSegments.put(len, numberSegment + 1);
             }
             SortedMap<Integer, Integer> sortedMapNumLen =
                     new TreeMap<Integer,Integer>(new ValueMapComparator(mapSegments));
